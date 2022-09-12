@@ -1,0 +1,39 @@
+﻿@model ContantMgmt.Models.Contact
+
+@{
+    ViewData["Title"] = "Contact Details";
+}
+
+<h1>Contact Details</h1>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.contactName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.contactName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.contactNo)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.contactNo)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.contactEmail)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.contactEmail)
+        </dd>
+    </dl>
+</div>
+<div>
+    @if (Context.Session.GetString("bIsAdmin") == "1")
+    {
+        <a asp-action="Edit" asp-route-id="@Model?.contactID">Edit</a>
+        @Html.Label("|")
+    }
+    <a asp-action="Index">Cancel</a>
+</div>

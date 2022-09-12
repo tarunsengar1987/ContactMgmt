@@ -1,0 +1,41 @@
+﻿@model ContantMgmt.Models.Contact
+
+@{
+    ViewData["Title"] = "Delete Contact";
+}
+
+<h1>Delete Contact Details</h1>
+
+<h3>Are you sure you want to delete this contact?</h3>
+<div>
+    <br />
+    <br />
+    <h4>Contact Details</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.contactName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.contactName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.contactNo)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.contactNo)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.contactEmail)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.contactEmail)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="contactID" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-action="Index">Cancel</a>
+    </form>
+</div>

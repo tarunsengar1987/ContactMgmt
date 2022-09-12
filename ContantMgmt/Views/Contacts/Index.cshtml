@@ -1,0 +1,57 @@
+﻿@model IEnumerable<ContantMgmt.Models.Contact>
+
+@{
+    ViewData["Title"] = "Contact List";
+}
+
+<h1>
+    Contact List
+    @if (Context.Session.GetString("bIsAdmin") == "1")
+    {
+        <a asp-action="Create" style="float:right; font-size:large;">[+] Add</a>
+    }
+</h1>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.contactName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.contactNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.contactEmail)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.contactName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.contactNo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.contactEmail)
+                </td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@item.contactID">Details</a>
+                    @if (Context.Session.GetString("bIsAdmin") == "1")
+                    {
+                        @Html.Label("|")
+                        <a asp-action="Edit" asp-route-id="@item.contactID">Edit</a>
+                        @Html.Label("|")
+                        <a asp-action="Delete" asp-route-id="@item.contactID">Delete</a>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
